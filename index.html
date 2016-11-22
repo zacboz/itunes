@@ -15,8 +15,45 @@
           </div>
           <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-              <input type="text" class="form-control" ng-model="artist" placeholder="Artist Name" >
-              <button class="btn btn-primary" ng-click="getSongData()"> Submit </button>
+              <input type="text" class="form-control ng-pristine ng-valid" ng-model="artist" placeholder="Search for Artist" >
+
+              <select class='form-control ng-pristine ng valid' ng-model='typeOfData' ng-change='getSongData(typeOfData)'>
+                <option value selected>All</option>
+                <option value='musicVideo' selected>Music Video</option>
+                <option value='movie'>Movie</option>
+                <option value='music'>Music</option>
+                <option value='podcast'>Podcast</option>
+                <option value='tvShow'>TV Show</option>
+                <option value='audiobook'>Audiobook</option>
+                <option value='ebook'>eBook</option>
+              </select>
+
+
+
+
+
+
+              <button class="btn btn-primary" ng-click="getSongData(typeOfData)"> Submit </button>
+
+              <!-- <input class="form-control" placeholder="Search Album" ng-model='itunesFilter.Collection'> -->
+              <select class="input-medium form-control" ng-model='filterColumn' ng-change='fixFilter(filterColumn, filterOptions,filterText)'>
+                <option value=''>All</option>
+                <option value='Type'>Type</option>
+                <option value='Collection'>Collection</option>
+                <option value='TrackCount'>Track Count</option>
+                <option value='CollectionPrice'>Price</option>
+              </select>
+
+              <input type='text' class="form-control search-query" placeholder="Filter by ..." ng-model='filterOptions.filterText'/>
+
+
+
+
+                      <!-- <select class="input-medium" ng-model='sortDirection'>
+                        <option value="-">Descending</option>
+                        <option value="+">Ascending</option>
+                      </select> -->
+
             </div>
           </form>
         </div>
@@ -24,10 +61,11 @@
     </div>
     <div class="panel panel-default">
       <div class="panel-heading"> Your Search Results:</div>
-     <div class="gridStyle" ng-grid="gridOptions" swap-image="defaultInfo.search"></div>
+     <div class="gridStyle" ng-grid="gridOptions"  swap-image="defaultInfo.search" ></div>
     </div>
+  </div>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.11/ng-grid.min.js"></script>
     <script src="js/app.js"></script>
     <script src="js/mainCtrl.js"></script>
